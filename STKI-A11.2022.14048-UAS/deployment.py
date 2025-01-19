@@ -19,7 +19,7 @@ st.set_page_config(
 st.title("📊 Customer Segmentation Dashboard")
 st.markdown("Dashboard ini digunakan untdf menganalisis data pelanggan menggunakan metode RFM (Recency, Frequency, Monetary).")
 
-data_file = 'https://raw.githubusercontent.com/horizonath/PembelajaranMesin/main/STKI-A11.2022.14048-UAS/deployment.py'
+data_file = 'https://raw.githubusercontent.com/horizonath/PembelajaranMesin/main/STKI-A11.2022.14048-UAS/OnlineRetail.csv'
 data = pd.read_csv(data_file)
 
 
