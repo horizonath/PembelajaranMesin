@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import seaborn as sns
-import gdown
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
@@ -14,13 +13,11 @@ st.set_page_config(
     layout="wide",
 )
 
-
 # Header aplikasi
 st.title("📊 Customer Segmentation Dashboard")
 st.markdown("Dashboard ini digunakan untdf menganalisis data pelanggan menggunakan metode RFM (Recency, Frequency, Monetary).")
 
-data_file = 'https://raw.githubusercontent.com/horizonath/PembelajaranMesin/main/STKI-A11.2022.14048-UAS/OnlineRetail.csv'
-df = pd.read_csv(data_file ,on_bad_lines='skip', encoding='unicode_escape')
+df = pd.read_csv("https://raw.githubusercontent.com/horizonath/PembelajaranMesin/main/STKI-A11.2022.14048-UAS/OnlineRetail.csv",on_bad_lines='skip', encoding='unicode_escape')
 st.dataframe(df.head())
 
 
