@@ -18,25 +18,18 @@ st.set_page_config(
 st.title("📊 Customer Segmentation Dashboard")
 st.markdown("Dashboard ini digunakan untdf menganalisis data pelanggan menggunakan metode RFM (Recency, Frequency, Monetary).")
 
-
-# Konversi link berbagi ke link unduhan langsung
+# Fungsi untuk mengonversi link berbagi Google Drive
 def get_downloadable_link(shared_link):
-    file_id = shared_link.split("/d/")[1].split("/view")[0]  # Ekstrak ID file
+    file_id = shared_link.split("/d/")[1].split("/view")[0]
     return f"https://drive.google.com/uc?id={file_id}"
 
 # Link berbagi Google Drive
-data_file = "https://drive.google.com/drive/folders/1_ap0Gt6iTyzrXi1lPh7XcZG-un5hHNLn?usp=sharing"
+data_url = "https://drive.google.com/file/d/1Fm4oCsMvQCeI-mHpvUFWpi12m-iUt_vU/view?usp=sharing"
+download_url = get_downloadable_link(data_url)
 
-# Ubah menjadi link unduhan langsung
-download_link = get_downloadable_link(data_file)
+# Baca file CSV dari link unduhan
+df = pd.read_csv(download_url)
 
-# Baca file CSV
-try:
-    df = pd.read_csv(download_link, on_bad_lines="skip", encoding="unicode_escape")
-    st.write("### Dataset yang Diunggah")
-    st.dataframe(df.head())
-except Exception as e:
-    st.error(f"Gagal membaca dataset: {e}")
 # Deskripsi data
 st.subheader("📋 Deskripsi Data")
 st.write(df.describe())
