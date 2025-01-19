@@ -19,7 +19,7 @@ st.markdown("Dashboard ini digunakan untdf menganalisis data pelanggan menggunak
 
 
 # Membaca dataset
-data_file = "https://drive.google.com/drive/folders/1_ap0Gt6iTyzrXi1lPh7XcZG-un5hHNLn?usp=drive_link"
+data_file = "https://drive.google.com/file/d/1Fm4oCsMvQCeI-mHpvUFWpi12m-iUt_vU/view?usp=drive_link"
 df = pd.read_csv(data_file, on_bad_lines="skip", encoding="unicode_escape")
 st.write("### Dataset yang Diunggah")
 st.dataframe(df.head())
