@@ -18,7 +18,8 @@ st.set_page_config(
 st.title("📊 Customer Segmentation Dashboard")
 st.markdown("Dashboard ini digunakan untdf menganalisis data pelanggan menggunakan metode RFM (Recency, Frequency, Monetary).")
 
-
+data_file = 'https://drive.google.com/file/d/1Fm4oCsMvQCeI-mHpvUFWpi12m-iUt_vU/view?usp=sharing'
+data = pd.read_csv(data_file)
 # Konversi link berbagi ke link unduhan langsung
 def get_downloadable_link(shared_link):
     file_id = shared_link.split("/d/")[1].split("/view")[0]  # Ekstrak ID file
