@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import seaborn as sns
+import gdown
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
@@ -18,12 +19,24 @@ st.title("📊 Customer Segmentation Dashboard")
 st.markdown("Dashboard ini digunakan untdf menganalisis data pelanggan menggunakan metode RFM (Recency, Frequency, Monetary).")
 
 
-# Membaca dataset
-data_file = "https://drive.google.com/file/d/1Fm4oCsMvQCeI-mHpvUFWpi12m-iUt_vU/view?usp=sharing"
-df = pd.read_csv(data_file, on_bad_lines="skip", encoding="unicode_escape")
-st.write("### Dataset yang Diunggah")
-st.dataframe(df.head())
+# Konversi link berbagi ke link unduhan langsung
+def get_downloadable_link(shared_link):
+    file_id = shared_link.split("/d/")[1].split("/view")[0]  # Ekstrak ID file
+    return f"https://drive.google.com/uc?id={file_id}"
 
+# Link berbagi Google Drive
+data_file = "https://drive.google.com/drive/folders/1_ap0Gt6iTyzrXi1lPh7XcZG-un5hHNLn?usp=sharing"
+
+# Ubah menjadi link unduhan langsung
+download_link = get_downloadable_link(data_file)
+
+# Baca file CSV
+try:
+    df = pd.read_csv(download_link, on_bad_lines="skip", encoding="unicode_escape")
+    st.write("### Dataset yang Diunggah")
+    st.dataframe(df.head())
+except Exception as e:
+    st.error(f"Gagal membaca dataset: {e}")
 # Deskripsi data
 st.subheader("📋 Deskripsi Data")
 st.write(df.describe())
