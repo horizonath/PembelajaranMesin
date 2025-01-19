@@ -14,21 +14,14 @@ st.set_page_config(
     layout="wide",
 )
 
+
+data_file = 'https://raw.githubusercontent.com/horizonath/PembelajaranMesin/main/STKI-A11.2022.14048-UAS/deployment.py'
+data = pd.read_csv(data_file)
+
 # Header aplikasi
 st.title("📊 Customer Segmentation Dashboard")
 st.markdown("Dashboard ini digunakan untdf menganalisis data pelanggan menggunakan metode RFM (Recency, Frequency, Monetary).")
 
-# Fungsi untuk mengonversi link berbagi Google Drive
-def get_downloadable_link(shared_link):
-    file_id = shared_link.split("/d/")[1].split("/view")[0]
-    return f"https://drive.google.com/uc?id={file_id}"
-
-# Link berbagi Google Drive
-data_url = "https://drive.google.com/file/d/1Fm4oCsMvQCeI-mHpvUFWpi12m-iUt_vU/view?usp=sharing"
-download_url = get_downloadable_link(data_url)
-
-# Baca file CSV dari link unduhan
-df = pd.read_csv(download_url)
 
 # Deskripsi data
 st.subheader("📋 Deskripsi Data")
